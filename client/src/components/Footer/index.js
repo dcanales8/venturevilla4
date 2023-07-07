@@ -16,16 +16,16 @@ const Footer = () => {
           </button>
         )}
         <h4>
-          Made with{' '}
-          <span
+          Your Next{' '}
+          {/* <span
             className="emoji"
             role="img"
             aria-label="heart"
             aria-hidden="false"
           >
             ❤️
-          </span>{' '}
-          by the Tech Thoughts team.
+          </span>{' '} */}
+          Venture Awaits!
         </h4>
       </div>
     </footer>
