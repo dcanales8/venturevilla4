@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Thought } = require('../models');
+const { User, Thought, Booking, Place } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -26,6 +26,19 @@ const resolvers = {
   },
 
   Mutation: {
+    signUp: async (parent, { username, email, password }) => {
+      const existingUser = await User.findOne({ email });
+  
+      if (existingUser) {
+        throw new AuthenticationError('User with this email already exists');
+      }
+  
+      const user = await User.create({ username, email, password });
+      const token = signToken(user);
+  
+      return { token, user };
+    },
+  
     addUser: async (parent, { username, email, password }) => {
       const user = await User.create({ username, email, password });
       const token = signToken(user);
@@ -114,7 +127,48 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+    bookPlace: async (parent, { bookingInput }, context) => {
+      if (context.user) {
+        const booking = await Booking.create({
+          user: context.user._id,
+          place: bookingInput.placeId,
+          checkIn: bookingInput.checkIn,
+          checkOut: bookingInput.checkOut,
+          name: bookingInput.name,
+          phone: bookingInput.phone,
+          price: bookingInput.price,
+        });
+    
+        return booking;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    addPlace: async (parent, { placeInput }, context) => {
+      if (context.user) {
+        const place = await Place.create({
+          owner: context.user._id,
+          title: placeInput.title,
+          address: placeInput.address,
+          photos: placeInput.photos,
+          description: placeInput.description,
+          perks: placeInput.perks,
+          extraInfo: placeInput.extraInfo,
+          checkIn: placeInput.checkIn,
+          checkOut: placeInput.checkOut,
+          maxGuests: placeInput.maxGuests,
+          price: placeInput.price,
+        });
+    
+        return place;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
   },
 };
+    
+  
+  
+  
+
 
 module.exports = resolvers;

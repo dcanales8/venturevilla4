@@ -17,6 +17,34 @@ const typeDefs = gql`
     comments: [Comment]!
   }
 
+  type Booking {
+    _id: ID
+    user: User
+    place: ID
+    checkIn: String
+    checkOut: String
+    name: String
+    phone: String
+    price: Float
+  }
+
+  type Place {
+    _id: ID
+    owner: User
+    title: String
+    address: String
+    photos: [String]
+    description: String
+    perks: [String]
+    extraInfo: String
+    checkIn: Int
+    checkOut: Int
+    maxGuests: Int
+    price: Float
+  }
+  
+  
+
   type Comment {
     _id: ID
     commentText: String
@@ -44,7 +72,33 @@ const typeDefs = gql`
     addComment(thoughtId: ID!, commentText: String!): Thought
     removeThought(thoughtId: ID!): Thought
     removeComment(thoughtId: ID!, commentId: ID!): Thought
+    bookPlace(bookingInput: BookingInput!): Booking
+    addPlace(placeInput: PlaceInput!): Place
+    signUp(username: String!, email: String!, password: String!): Auth
   }
+
+  input BookingInput {
+    placeId: ID!
+    checkIn: String!
+    checkOut: String!
+    name: String!
+    phone: String!
+    price: Float!
+  }
+
+  input PlaceInput {
+    title: String!
+    address: String!
+    photos: [String]
+    description: String
+    perks: [String]
+    extraInfo: String
+    checkIn: Int
+    checkOut: Int
+    maxGuests: Int
+    price: Float
+  }
+
 `;
 
 module.exports = typeDefs;
