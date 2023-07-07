@@ -23,15 +23,16 @@ function Home() {
     <Row className="image-container">
       <Col xs={12} md={4}>
         <Image src={process.env.PUBLIC_URL + "/assets/image1.jpg" } fluid/>
- 
       </Col>
-      <Col xs={12} md={4}>
+
+      {/* <Col xs={12} md={4}>
         <Image src={process.env.PUBLIC_URL + "/assets/image3.jpg" } fluid/>
       </Col>
       <Col xs={12} md={4}>
         <Image src={process.env.PUBLIC_URL + "/assets/image2.jpg" } fluid/>
-      </Col>
+      </Col> */}
     </Row>
+    
   </Container>
    
 
