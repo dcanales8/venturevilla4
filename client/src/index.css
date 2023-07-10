@@ -235,7 +235,10 @@ button:-moz-focusring,
 fieldset {
   padding: 0.35em 0.75em 0.625em;
 }
-
+/* .venture-search{
+  margin-left: 5%;
+  padding-left: 5%;
+} */
 /**
  * 1. Correct the text wrapping in Edge and IE.
  * 2. Correct the color inheritance from `fieldset` elements in IE.

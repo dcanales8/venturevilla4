@@ -23,7 +23,7 @@ const Header = () => {
         <Image className='vv-logo' src={process.env.PUBLIC_URL + "/assets/venture-villa-logo.png"} fluid />
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
+          <Nav className="d-flex ml-auto">
             <nav>
               {Auth.loggedIn() ? (
                 <>
@@ -51,7 +51,7 @@ const Header = () => {
                   </Link></Nav.Link>
                 </>
               ) : (
-                <>
+                <section className='d-flex' >
                   <Nav.Link><Link to="/">
                     Home
                   </Link></Nav.Link>
@@ -61,31 +61,19 @@ const Header = () => {
                   <Nav.Link ><Link to="/signup">
                     Signup
                   </Link></Nav.Link>
-                </>
+                 
+                </section>
               )}
             </nav>
+            </Nav>
 
-
-            {/* <NavDropdown title="Profile" id="basic-nav-dropdown">
-                <NavDropdown.Item><Link to="/login">
-                Profile
-              </Link></NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.2">
-                  Your Ventures
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.3">Account settings</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                  Get help
-                </NavDropdown.Item>
-              </NavDropdown> */}
-
+<Nav>
+            <section className="venture-search ml-auto">
             <Stack direction="horizontal" gap={3}>
-              <Form.Control className="me-auto" placeholder="Search for your next venture here..." />
-              <Button variant="secondary">Search</Button>
+              <Form.Control className="me-auto" placeholder="next venture ..." />
+              <Button variant="light">Search</Button>
             </Stack>
+            </section>
           </Nav>
         </Navbar.Collapse>
       </Container>
