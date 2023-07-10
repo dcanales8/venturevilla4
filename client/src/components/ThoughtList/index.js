@@ -8,7 +8,7 @@ const ThoughtList = ({
   showUsername = true,
 }) => {
   if (!thoughts.length) {
-    return <h3>No Thoughts Yet</h3>;
+    return <h3>No Ventures Yet</h3>;
   }
 
   return (
@@ -17,7 +17,7 @@ const ThoughtList = ({
       {thoughts &&
         thoughts.map((thought) => (
           <div key={thought._id} className="card mb-3">
-            <h4 className="card-header bg-primary text-light p-2 m-0">
+            <h4 className="card-header text-dark p-2 m-0"  style={{ background: '#f7e70c' }}>
               {showUsername ? (
                 <Link
                   className="text-light"
@@ -25,25 +25,25 @@ const ThoughtList = ({
                 >
                   {thought.thoughtAuthor} <br />
                   <span style={{ fontSize: '1rem' }}>
-                    had this thought on {thought.createdAt}
+                    added this venture to their bucklist on {thought.createdAt}
                   </span>
                 </Link>
               ) : (
                 <>
                   <span style={{ fontSize: '1rem' }}>
-                    You had this thought on {thought.createdAt}
+                    You added this venture to your bucklist on {thought.createdAt}
                   </span>
                 </>
               )}
             </h4>
-            <div className="card-body bg-light p-2">
+            <div className="card-body p-2">
               <p>{thought.thoughtText}</p>
             </div>
             <Link
-              className="btn btn-primary btn-block btn-squared"
+              className="btn btn-block btn-squared"  style={{ background: '#f7e70c' }}
               to={`/thoughts/${thought._id}`}
             >
-              Join the discussion on this thought.
+              Give some recommendations for this venture villa location.
             </Link>
           </div>
         ))}
