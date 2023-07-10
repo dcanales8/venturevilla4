@@ -17,14 +17,17 @@ const Header = () => {
     Auth.logout();
   };
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
-      <Container>
-        {/* <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand> */}
-        <Image className='vv-logo' src={process.env.PUBLIC_URL + "/assets/venture-villa-logo.png"} fluid />
+    <Navbar expand="lg" className="bg-body-tertiary ">
+      <Container fluid className='betterheader'>
+        <Navbar.Brand>
+        <Image className='vv-logo' src={process.env.PUBLIC_URL + "/assets/venture-villa-logo.png"} fluid /></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="d-flex ml-auto">
-            <nav>
+        <Nav
+            className="me-auto my-2 my-lg-0 navNav"
+            style={{ maxHeight: '100px' }}
+            basic-navbar-nav
+          >
               {Auth.loggedIn() ? (
                 <>
                   <Nav.Link><Link to="/">
@@ -51,29 +54,34 @@ const Header = () => {
                   </Link></Nav.Link>
                 </>
               ) : (
-                <section className='d-flex' >
+                <>
                   <Nav.Link><Link to="/">
                     Home
                   </Link></Nav.Link>
+
                   <Nav.Link >  <Link to="/login">
                     Login
                   </Link></Nav.Link>
+    
                   <Nav.Link ><Link to="/signup">
                     Signup
                   </Link></Nav.Link>
-                 
-                </section>
+       
+                </>
               )}
-            </nav>
-            </Nav>
+           
 
-<Nav>
-            <section className="venture-search ml-auto">
+
+         
+         
+
+
+
             <Stack direction="horizontal" gap={3}>
-              <Form.Control className="me-auto" placeholder="next venture ..." />
-              <Button variant="light">Search</Button>
+              <Form.Control className="me-auto" placeholder=" Venture Search..." />
+              <Button variant="secondary">Search</Button>
             </Stack>
-            </section>
+
           </Nav>
         </Navbar.Collapse>
       </Container>

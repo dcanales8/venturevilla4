@@ -228,13 +228,22 @@ button:-moz-focusring,
 [type='submit']:-moz-focusring {
   outline: 1px solid ButtonText;
 }
-
+.betterheader{
+  margin-bottom: 50px;
+  padding: 10px;
+}
 /**
  * Correct the padding in Firefox.
  */
 fieldset {
   padding: 0.35em 0.75em 0.625em;
 }
+/* .navNav{
+  justify-content: flex-start;
+  align-items: flex-end;
+  align-content: flex-end;
+
+} */
 /* .venture-search{
   margin-left: 5%;
   padding-left: 5%;
