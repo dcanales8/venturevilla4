@@ -1,4 +1,5 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
+import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 // import { useQuery } from '@apollo/client';
 
 // import ThoughtList from '../components/ThoughtList';
@@ -15,24 +16,87 @@ import Row from 'react-bootstrap/Row';
 // import InputGroup from 'react-bootstrap/InputGroup';
 import Container from 'react-bootstrap/Container';
 
+const client = new ApolloClient({
+  uri: 'https://api.insidebnb.com:8443/v2/markets',
+  cache: new InMemoryCache(),
+});
+const GET_MARKETS_QUERY = gql`
+  query {
+    markets {
+      name
+      country
+      city
+    }
+  }
+`;
+client
+  .query({
+    query: GET_MARKETS_QUERY,
+  })
+  .then((response) => {
+    const { data } = response;
+    console.log(data.markets);
+  })
+  .catch((error) => {
+    console.error(error);
+  });
 
 function Home() {
+  const [listings, setListings] = useState([]);
 
-  return (<>
-    <Container>
-    <Row className="image-container">
-      <Col xs={12} md={4}>
-        <Image src={process.env.PUBLIC_URL + "/assets/image1.jpg" } fluid/>
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          'https://airbnb-listings.p.rapidapi.com/v2/getadmins?countrycode=IT&admin1=07&admin2=RM&admin3=058091&admin4=05809101',
+          {
+            headers: {
+              'X-RapidAPI-Key': 'b3569df6b3mshd27a28f0f1315a1p1376d5jsn45d184e33c7f',
+              'X-RapidAPI-Host': 'airbnb-listings.p.rapidapi.com',
+            },
+          }
+        );
+        const data = await response.json();
+        console.log(data);
+        // setListings(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return (
+    <div>
+      {listings.map((listing) => (
+        <div key={listing.id}>
+          <h3>{listing.title}</h3>
+          <p>{listing.description}</p>
+          {/* Display other listing details */}
+        </div>
+      ))}
+    </div>
+  );
+   }
+
+// function Home() {
+
+//   return (<>
+//     <Container>
+//     <Row className="image-container">
+//       <Col xs={12} md={4}>
+//         <Image src={process.env.PUBLIC_URL + "/assets/image1.jpg" } fluid/>
  
-      </Col>
-      <Col xs={12} md={4}>
-        <Image src={process.env.PUBLIC_URL + "/assets/image3.jpg" } fluid/>
-      </Col>
-      <Col xs={12} md={4}>
-        <Image src={process.env.PUBLIC_URL + "/assets/image2.jpg" } fluid/>
-      </Col>
-    </Row>
-  </Container>
+//       </Col>
+//       <Col xs={12} md={4}>
+//         <Image src={process.env.PUBLIC_URL + "/assets/image3.jpg" } fluid/>
+//       </Col>
+//       <Col xs={12} md={4}>
+//         <Image src={process.env.PUBLIC_URL + "/assets/image2.jpg" } fluid/>
+//       </Col>
+//     </Row>
+//   </Container>
    
 
       {/* <Row>
@@ -132,9 +196,9 @@ function Home() {
         </Card>
         </Col>
       </Row> */}
-   </>
-  );
-}
+//    </>
+//   );
+// }
 
 export default Home;
 
