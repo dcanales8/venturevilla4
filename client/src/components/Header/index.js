@@ -17,63 +17,61 @@ const Header = () => {
     Auth.logout();
   };
   return (
-    <Navbar expand="lg" className="bg-body-tertiary ">
+    <Navbar expand="md" className="bg-body-tertiary ">
       <Container fluid className='betterheader'>
         <Navbar.Brand>
-        <Image className='vv-logo' src={process.env.PUBLIC_URL + "/assets/venture-villa-logo.png"} fluid /></Navbar.Brand>
+          <Image className='vv-logo' src={process.env.PUBLIC_URL + "/assets/venture-villa-logo.png"} fluid /></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-        <Nav
-            className="me-auto my-2 my-lg-0 navNav"
-            style={{ maxHeight: '100px' }}
-            basic-navbar-nav
-          >
-              {Auth.loggedIn() ? (
-                <>
-                  <Nav.Link><Link to="/">
-                    Home
-                  </Link></Nav.Link>
-                  <NavDropdown title="Profile and more" id="basic-nav-dropdown">
-                    <NavDropdown.Item href="#action/3.1">    <Link to="/me">
-                      {Auth.getProfile().data.username}'s Ventures
-                    </Link></NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item href="#action/3.2">
-                      Venture History
-                    </NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item href="#action/3.3">Account settings</NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item href="#action/3.4">
-                      Get help
-                    </NavDropdown.Item>
-                  </NavDropdown>
+          <Nav
+            className=" my-2 my-lg-0 navNav">
+              
+            {Auth.loggedIn() ? (
+              <>
+                <Nav.Link><Link to="/">
+                  Home
+                </Link></Nav.Link>
+                <NavDropdown title="Profile and more" id="basic-nav-dropdown">
+                  <NavDropdown.Item href="#action/3.1">    <Link to="/me">
+                    {Auth.getProfile().data.username}'s Ventures
+                  </Link></NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item href="#action/3.2">
+                    Venture History
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item href="#action/3.3">Account settings</NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item href="#action/3.4">
+                    Get help
+                  </NavDropdown.Item>
+                </NavDropdown>
 
-                  <Nav.Link >  <Link onClick={logout}>
-                    Logout
-                  </Link></Nav.Link>
-                </>
-              ) : (
-                <>
-                  <Nav.Link><Link to="/">
-                    Home
-                  </Link></Nav.Link>
+                <Nav.Link >  <Link onClick={logout}>
+                  Logout
+                </Link></Nav.Link>
+              </>
+            ) : (
+              <>
+                <Nav.Link><Link to="/">
+                  Home
+                </Link></Nav.Link>
 
-                  <Nav.Link >  <Link to="/login">
-                    Login
-                  </Link></Nav.Link>
-    
-                  <Nav.Link ><Link to="/signup">
-                    Signup
-                  </Link></Nav.Link>
-       
-                </>
-              )}
-           
+                <Nav.Link >  <Link to="/login">
+                  Login
+                </Link></Nav.Link>
+
+                <Nav.Link ><Link to="/signup">
+                  Signup
+                </Link></Nav.Link>
+
+              </>
+            )}
 
 
-         
-         
+
+
+
 
 
 

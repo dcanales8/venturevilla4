@@ -229,8 +229,9 @@ button:-moz-focusring,
   outline: 1px solid ButtonText;
 }
 .betterheader{
-  margin-bottom: 50px;
-  padding: 10px;
+  margin-bottom: auto;
+  padding: auto;
+ 
 }
 /**
  * Correct the padding in Firefox.
@@ -1747,4 +1748,14 @@ label form [type='radio'] {
     padding-bottom: 0;
     margin-bottom: 0;
   }
+  
+}
+
+@media screen and (min-width: 960px) {
+  #basic-navbar-nav{
+    display: flex;
+    justify-content: end;
+  
+  }
+  
 }
