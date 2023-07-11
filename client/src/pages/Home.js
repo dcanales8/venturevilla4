@@ -44,6 +44,7 @@ client
 function Home() {
   const [listings, setListings] = useState([]);
 
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -97,6 +98,7 @@ function Home() {
 //       </Col>
 //     </Row>
 //   </Container>
+  
    
 
       {/* <Row>
