@@ -4,6 +4,7 @@ import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 
 import Auth from '../utils/auth';
+// import Col from 'react-bootstrap/esm/Col';
 
 const Login = (props) => {
   const [formState, setFormState] = useState({ email: '', password: '' });
@@ -44,7 +45,7 @@ const Login = (props) => {
     <main className="flex-row justify-center mb-4">
       <div className="col-12 col-lg-10">
         <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Login</h4>
+          <h4 className="card-header text-dark p-2" style={{ background: '#f7e70c' }}>Welcome Back Venturer :)!</h4>
           <div className="card-body">
             {data ? (
               <p>
@@ -69,13 +70,22 @@ const Login = (props) => {
                   value={formState.password}
                   onChange={handleChange}
                 />
-                <button
-                  className="btn btn-block btn-primary"
-                  style={{ cursor: 'pointer' }}
-                  type="submit"
-                >
-                  Submit
-                </button>
+           
+                  <button
+                    className="btn btn-block btn-light "
+                    style={{ cursor: 'pointer' }}
+                    type="submit"
+                  >
+                    Login
+                  </button>
+
+        
+                  <button>
+                    <Link to="/signup">
+                      don't have an account? Signup here!
+                    </Link>
+                  </button>
+     
               </form>
             )}
 

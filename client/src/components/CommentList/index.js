@@ -2,16 +2,16 @@ import React from 'react';
 
 const CommentList = ({ comments = [] }) => {
   if (!comments.length) {
-    return <h3>No Comments Yet</h3>;
+    return <h3>No Recommendations Yet</h3>;
   }
 
   return (
     <>
       <h3
         className="p-5 display-inline-block"
-        style={{ borderBottom: '1px dotted #1a1a1a' }}
+        style={{ borderBottom: '1px solid #1a1a1a' }}
       >
-        Comments
+        Recommendations
       </h3>
       <div className="flex-row my-4">
         {comments &&

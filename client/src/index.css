@@ -96,7 +96,7 @@ abbr[title] {
   /* 1 */
   text-decoration: underline;
   /* 2 */
-  text-decoration: underline dotted;
+  text-decoration: underline solid;
   /* 2 */
 }
 
@@ -226,16 +226,29 @@ button:-moz-focusring,
 [type='button']:-moz-focusring,
 [type='reset']:-moz-focusring,
 [type='submit']:-moz-focusring {
-  outline: 1px dotted ButtonText;
+  outline: 1px solid ButtonText;
 }
-
+.betterheader{
+  margin-bottom: auto;
+  padding: auto;
+ 
+}
 /**
  * Correct the padding in Firefox.
  */
 fieldset {
   padding: 0.35em 0.75em 0.625em;
 }
+/* .navNav{
+  justify-content: flex-start;
+  align-items: flex-end;
+  align-content: flex-end;
 
+} */
+/* .venture-search{
+  margin-left: 5%;
+  padding-left: 5%;
+} */
 /**
  * 1. Correct the text wrapping in Edge and IE.
  * 2. Correct the color inheritance from `fieldset` elements in IE.
@@ -1735,4 +1748,14 @@ label form [type='radio'] {
     padding-bottom: 0;
     margin-bottom: 0;
   }
+  
+}
+
+@media screen and (min-width: 960px) {
+  #basic-navbar-nav{
+    display: flex;
+    justify-content: end;
+  
+  }
+  
 }
