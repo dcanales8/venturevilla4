@@ -15,6 +15,7 @@ import SingleThought from './pages/SingleThought';
 import Profile from './pages/Profile';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import SpecificPlace from './components/Places/SpecificPlace';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -46,8 +47,9 @@ function App() {
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
           <Header />
-      
+        
             <Routes>
+             <Route path="/place/:id"element= {<SpecificPlace/>}/>
               <Route 
                 path="/" 
                 element={<Home />} 
