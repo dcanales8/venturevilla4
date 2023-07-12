@@ -15,6 +15,7 @@ import Row from 'react-bootstrap/Row';
 // import Form from 'react-bootstrap/Form';
 // import InputGroup from 'react-bootstrap/InputGroup';
 import Container from 'react-bootstrap/Container';
+import PlaceList from '../components/Places/Places';
 
 const client = new ApolloClient({
   uri: 'https://api.insidebnb.com:8443/v2/markets',
@@ -70,13 +71,7 @@ function Home() {
 
   return (
     <div>
-      {listings.map((listing) => (
-        <div key={listing.id}>
-          <h3>{listing.title}</h3>
-          <p>{listing.description}</p>
-          {/* Display other listing details */}
-        </div>
-      ))}
+     <PlaceList/>
     </div>
   );
    }
